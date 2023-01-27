@@ -1,0 +1,11 @@
+
+#PBS -lwalltime=HH:MM:00
+
+#PBS -lselect=1:ncpus=N:mem=Mgb
+module load anaconda3/personal
+echo 123 | cat test.txt 
+
+mkdir $WORK/$PBS_JOBID
+cp * $WORK/$PBS_JOBID
+
+
