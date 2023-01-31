@@ -1,7 +1,7 @@
 
 wget -O hacat_bg4_Rep1.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR309/000/SRR3095370/SRR3095370.fastq.gz
 
-wget -O hacat_bg4_Rep2_1.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR309/005/SRR3095355/SRR3095355.fastq.gz | gunzip
+wget -O hacat_bg4_Rep2_1.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR309/005/SRR3095355/SRR3095355.fastq.gz
 
 wget -O hacat_bg4_Rep2_2.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR309/006/SRR3095356/SRR3095356.fastq.gz
 
