@@ -11,4 +11,4 @@ wget -O hacat_input_Rep1_2.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR309/00
 
 wget -O hacat_input_Rep2.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR309/007/SRR3095357/SRR3095357.fastq.gz
 
-gunzip *.fastq
+gunzip *.fastq.gz
