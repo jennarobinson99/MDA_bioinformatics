@@ -7,6 +7,5 @@ echo 123 > test.txt
 
 
 cp * $PBS_O_WORKDIR
-rm $PBS_O_WORKDIR/*.e*
-rm $PBS_O_WORKDIR/*.o*
+
 
