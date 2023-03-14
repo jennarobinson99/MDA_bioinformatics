@@ -2,10 +2,12 @@
 #PBS -lwalltime=08:00:00
 #PBS -lselect=1:ncpus=1:mem=900gb
 
+module load fastqc  
+
 for file in /rds/general/user/jr2715/home/mda_training/fastq/*.fastq 
 do 
 name=`basename $file .fastq` 
-fastqc /rds/general/user/jr2715/home/mda_training/fastq/$file -d $TEMPDIR -o $file_1-fastq
+fastqc $file -d $TEMPDIR -o $file_1-fastq
 
 
 cp * $PBS_O_WORKDIR
