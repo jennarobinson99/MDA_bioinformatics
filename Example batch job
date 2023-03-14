@@ -1,6 +1,6 @@
 
-#PBS -lwalltime=HH:MM:00
-#PBS -lselect=1:ncpus=N:mem=Mgb
+#PBS -lwalltime=08:00:00
+#PBS -lselect=1:ncpus=1:mem=900gb
 
 
 echo 123 > test.txt 
