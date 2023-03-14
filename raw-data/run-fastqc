@@ -1,2 +1,2 @@
-fastqc -t 12 *.fastq
+fastqc *.fastq
 
