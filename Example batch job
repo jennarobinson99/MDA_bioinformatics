@@ -7,7 +7,7 @@ module load fastqc
 for file in /rds/general/user/jr2715/home/mda_training/fastq/*.fastq 
 do 
 name=`basename $file .fastq` 
-fastqc $file -d $TEMPDIR -o $file_1-fastq
+fastqc $file -d . -o .
 
 
 cp * $PBS_O_WORKDIR
