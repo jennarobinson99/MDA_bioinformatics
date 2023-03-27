@@ -1,0 +1,31 @@
+Download genome 
+
+#PBS -lwalltime=08:00:00
+#PBS -lselect=1:ncpus=1:mem=900gb
+
+
+wget --no-verbose --directory-prefix hg38_genome "ftp.ensembl.org/pub/release-104/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz"
+gunzip Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+
+
+cp * $PBS_O_WORKDIR
+
+
+
+Build index 
+
+#PBS -lwalltime=08:00:00
+#PBS -lselect=1:ncpus=1:mem=900gb
+
+cp * $PBS_O_WORKDIR
+
+
+
+
+
+Align reads 
+
+#PBS -lwalltime=08:00:00
+#PBS -lselect=1:ncpus=1:mem=900gb
+
+cp * $PBS_O_WORKDIR
