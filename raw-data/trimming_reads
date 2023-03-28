@@ -1,5 +1,8 @@
-for file in *.fastq 
-do 
+module load anaconda3/personal
+module load cutadapt
+
+for file in $PBS_O_WORKDIR/*.fastq 
+do
 name=`basename $file .fastq` 
 cutadapt -q 20 -a CTGTCTCTTATACACATCT $file > $name.trimmed.fastq 2> report_$name.txt
 done
