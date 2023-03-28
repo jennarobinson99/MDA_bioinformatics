@@ -1,1 +1,2 @@
 cat hacat_bg4_rep2_1.trimmed.fastq hacat_bg4_rep2_2.trimmed.fastq > hacat_bg4_rep2_merged.trimmed.fastq
+cat hacat_input_rep1_1.trimmed.fastq hacat_input_rep1_2.trimmed.fastq > hacat_input_rep1_merged.trimmed.fastq
