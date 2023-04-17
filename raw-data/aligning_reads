@@ -17,6 +17,10 @@ Build index
 #PBS -lwalltime=08:00:00
 #PBS -lselect=1:ncpus=1:mem=900gb
 
+module load anaconda3/personal
+module load bowtie2
+bowtie2-build $PBS_O_WORKDIR/Homo_sapiens.GRCh38.dna.primary_assembly.fa hg38 
+
 cp * $PBS_O_WORKDIR
 
 
