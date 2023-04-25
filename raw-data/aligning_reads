@@ -35,7 +35,7 @@ Align reads
 module load anaconda3/personal
 module load bowtie2
 
-for file in $PBS_O_WORDIR/*.fastq
+for file in /data/jr2715/bioinformatics_course/raw_data_processing/trimmed_reads/*.fastq
 do 
 name=`basename $file .trimmed.fastq` 
 bowtie2 -x /rds/general/user/jr2715/home/mda_training/aligning/hg38 -U $file -S $name.sam  2> summary_$file.txt
