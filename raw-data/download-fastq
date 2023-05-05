@@ -1,4 +1,8 @@
 
+#PBS -lwalltime=08:00:00
+#PBS -lselect=1:ncpus=1:mem=900gb
+
+
 wget -O hacat_bg4_Rep1.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR309/000/SRR3095370/SRR3095370.fastq.gz
 
 wget -O hacat_bg4_Rep2_1.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR309/005/SRR3095355/SRR3095355.fastq.gz
@@ -12,3 +16,5 @@ wget -O hacat_input_Rep1_2.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR309/00
 wget -O hacat_input_Rep2.fastq.gz ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR309/007/SRR3095357/SRR3095357.fastq.gz
 
 gunzip *.fastq.gz
+
+cp * $PBS_O_WORKDIR
