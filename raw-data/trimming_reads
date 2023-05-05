@@ -9,3 +9,5 @@ do
 name=`basename $file .fastq` 
 cutadapt -q 20 -a CTGTCTCTTATACACATCT $file > $name.trimmed.fastq 2> report_$name.txt
 done
+
+cp * $PBS_O_WORKDIR
