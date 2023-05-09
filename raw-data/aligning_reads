@@ -56,8 +56,13 @@ gunzip hg38-blacklist.v2.bed.gz
 cp * $PBS_O_WORKDIR
 
 
-
 filtering etc 
+
+#PBS -lwalltime=72:00:00
+#PBS -lselect=1:ncpus=9:mem=900gb
+
+module load samtools
+module load bedtools
 
 for file in /rds/general/user/jr2715/home/mda_training/aligning/*.sam
 do
@@ -70,3 +75,5 @@ echo blacklisted regions removed from $name
 samtools index $name.bl.dedup.sort.bam
 rm $name.bam $name.sorted.bam $name.dedup.sort.bam
 done
+
+cp * $PBS_O_WORKDIR
