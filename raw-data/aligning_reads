@@ -57,9 +57,9 @@ cp * $PBS_O_WORKDIR
 
 
 
-filtering 
+filtering etc 
 
-for file in *.sam
+for file in /rds/general/user/jr2715/home/mda_training/aligning/*.sam
 do
 name=`basename $file .sam` 
 echo starting $name 
