@@ -54,3 +54,24 @@ wget https://github.com/Boyle-Lab/Blacklist/blob/master/lists/hg38-blacklist.v2.
 gunzip hg38-blacklist.v2.bed.gz
 
 cp * $PBS_O_WORKDIR
+
+
+
+filtering 
+
+for file in *.sam
+do
+name=`basename $file .sam` 
+echo starting $name 
+samtools view -F 2308 -b -q 10 $name.sam > $name.bam
+echo $name filtered
+samtools sort -o $name.sorted.bam $name.bam 
+echo $name sorted
+samtools markdup -r $name.sorted.bam $name.dedup.sort.bam
+echo $name deduplicated
+bedtools intersect -v -abam $name.dedup.sort.bam -b '/data/jr2715/bioinformatics_course/hg19-blacklist.v2.bed' > $name.bl.dedup.sort.bam
+echo blacklisted regions removed from $name
+samtools index $name.bl.dedup.sort.bam
+echo $name indexed 
+rm $name.bam $name.sorted.bam $name.dedup.sort.bam
+done
