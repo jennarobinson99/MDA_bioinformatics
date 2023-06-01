@@ -1,0 +1,10 @@
+#add chr to start of column 1
+for  file in *.bed 
+do
+cat $file | sed 's/^/chr/' > new_$file
+done 
+
+
+#intersect file 
+module load bedtools 
+bedtools intersect -a file_1.bed -b file_2.bed > interesect_file.bed
