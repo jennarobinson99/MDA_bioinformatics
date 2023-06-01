@@ -6,8 +6,10 @@ conda install -c bioconda fastp
 
 #PBS -lwalltime=08:00:00
 #PBS -lselect=1:ncpus=1:mem=900gb
+
 /rds/general/user/jr2715/home/anaconda3/bin/fastp -i $PBS_O_WORKDIR/peo1_a1.R1.fq.gz -I $PBS_O_WORKDIR/peo1_a1.R2.fq.gz -o trimmed_peo1_a1.R1.fq.gz -O trimmed_peo1_a1.R2.fq.gz --detect_adapter_for_pe -l 20 -j peo1_a1.R1.fastp.json -h peo1_a1.R2.fastp.html
 cp * $PBS_O_WORKDIR
+
 
 #automated script 
 # create file with list of sample names 
@@ -21,7 +23,14 @@ peo1_a3_3
 peo1_a4" > peo1_h3k27ac.txt 
 
 #run fastp 
-for name in $(cat peo1_h3k27ac.txt)
+
+#PBS -lwalltime=08:00:00
+#PBS -lselect=1:ncpus=1:mem=900gb
+
+module load anaconda3/personal
+for name in $(cat $PBS_O_WORKDIR/peo1_h3k27ac.txt)
 do
-fastp -i $name.R1.fastq.gz -I $name.R2.fastq.gz -o trimmed_$name.R1.fastq.gz -O trimmed_$name.R2.fastq.gz --detect_adapter_for_pe -l 20 -j $name.fastp.json -h $name.fastp.html
+/rds/general/user/jr2715/home/anaconda3/bin/fastp -i $PBS_O_WORKDIR/$name.R1.fq.gz -I $PBS_O_WORKDIR/$name.R2.fq.gz -o trimmed_$name.R1.fq.gz -O trimmed_$name.R2.fq.gz --detect_adapter_for_pe -l 20 -j $name.fastp.json -h $name.fastp.html
 done
+
+cp * $PBS_O_WORKDIR
