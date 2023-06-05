@@ -1,2 +1,2 @@
 module load homer 
-annotatePeaks.pl  hacat_shared.bed hg19 > annotated_hacat_shared.bed 2> report_hacat_shared.bed
+annotatePeaks.pl hacat_shared.bed hg19 > annotated_hacat_shared.bed 2> report_hacat_shared.bed
