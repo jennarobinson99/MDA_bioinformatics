@@ -58,21 +58,17 @@ cp * $PBS_O_WORKDIR
 
 filtering etc 
 
-#PBS -lwalltime=72:00:00
-#PBS -lselect=1:ncpus=9:mem=900gb
-
+#PBS -lwalltime=08:00:00
+#PBS -lselect=1:ncpus=200:mem=900gb
 module load samtools
 module load bedtools
-
-for file in /rds/general/user/jr2715/home/mda_training/aligning/*.sam
-do
+module load picard
+for file in $PBS_O_WORKDIR/*.sam
 name=`basename $file .sam` 
-samtools view -F 2308 -b -q 10 $name.sam > $name.bam
-samtools sort -o $name.sorted.bam $name.bam 
-samtools markdup -r $name.sorted.bam $name.dedup.sort.bam
-bedtools intersect -v -abam $name.dedup.sort.bam -b '/data/jr2715/bioinformatics_course/hg19-blacklist.v2.bed' > $name.bl.dedup.sort.bam
+samtools view -F 2308 -b -q 10 $PBS_O_WORKDIR/$name.sam > $name.bam
+samtools sort -o $name.sort.bam -O 'bam' -T temp_$name $name.bam
+picard MarkDuplicates REMOVE_SEQUENCING_DUPLICATES=TRUE I=$name.sort.bam O=$name.dedup.sort.bam M=$name.metrics.txt
+bedtools intersect -v -abam $name.dedup.sort.bam -b '/rds/general/project/diantonio/live/tools/blacklisted_regions/hg38-blacklist.v2.bed' > $name.bl.dedup.sort.bam
 samtools index $name.bl.dedup.sort.bam
 rm $name.bam $name.sorted.bam $name.dedup.sort.bam
-done
-
 cp * $PBS_O_WORKDIR
