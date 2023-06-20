@@ -4,6 +4,8 @@
 module load anaconda3/personal
 
 multiBamSummary bins --bamfiles /rds/general/user/jr2715/home/mda_training/hacat_bg4_Rep1.bl.dedup.sort.bam /rds/general/user/jr2715/home/mda_training/hacat_bg4_Rep2.bl.dedup.sort.bam --outFileName multiBamArray_hacat_bg4.npz --binSize=5000 --extendReads 75 --labels bg4_1 bg4_2
+# extendreads = read length for single-end or for paired end leave blank e.g. --extendReads 
+
 plotCorrelation --corData multiBamArray_hacat_bg4.npz --plotFile bg4_hacat.pdf --outFileCorMatrix bg4_hacat_matrix.txt --whatToPlot heatmap --corMethod spearman
 
 cp * $PBS_O_WORKDIR
