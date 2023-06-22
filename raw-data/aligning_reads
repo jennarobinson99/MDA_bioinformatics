@@ -64,11 +64,13 @@ module load samtools
 module load bedtools
 module load picard
 for file in $PBS_O_WORKDIR/*.sam
+do
 name=`basename $file .sam` 
 samtools view -F 2308 -b -q 10 $PBS_O_WORKDIR/$name.sam > $name.bam
 samtools sort -o $name.sort.bam -O 'bam' -T temp_$name $name.bam
 picard MarkDuplicates REMOVE_SEQUENCING_DUPLICATES=TRUE I=$name.sort.bam O=$name.dedup.sort.bam M=$name.metrics.txt
 bedtools intersect -v -abam $name.dedup.sort.bam -b '/rds/general/project/diantonio/live/tools/blacklisted_regions/hg38-blacklist.v2.bed' > $name.bl.dedup.sort.bam
 samtools index $name.bl.dedup.sort.bam
-rm $name.bam $name.sorted.bam $name.dedup.sort.bam
+rm $name.bam $name.sort.bam $name.dedup.sort.bam
+done
 cp * $PBS_O_WORKDIR
