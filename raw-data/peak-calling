@@ -1,5 +1,5 @@
 #call peaks 
-/rds/general/user/jr2715/home/anaconda3/bin/macs2 callpeak --keep-dup all  -t /rds/general/user/jr2715/home/mda_training/hacat_bg4_Rep2.bl.dedup.sort.bam -c /rds/general/user/jr2715/home/mda_training/hacat_input_Rep2.bl.dedup.sort.bam -n hacat_bg4_Rep2
+/rds/general/user/jr2715/home/anaconda3/bin/macs2 callpeak all  -t /rds/general/user/jr2715/home/mda_training/hacat_bg4_Rep2.bl.dedup.sort.bam -c /rds/general/user/jr2715/home/mda_training/hacat_input_Rep2.bl.dedup.sort.bam -n hacat_bg4_Rep2
 
 #add chr to first column 
 cat hacat_bg4_rep1_peaks_JR.bed | sed 's/^/chr/' > new_hacat_bg4_rep1.bed
@@ -7,5 +7,5 @@ cat hacat_bg4_rep1_peaks_JR.bed | sed 's/^/chr/' > new_hacat_bg4_rep1.bed
 
 #find reproducible peaks 
 module load bedtools
-bedtools intersect -a new_hacat_bg4_Rep2.bed -b hacat_bg4_rep1_paper.bed > hacat_shared.bed 
+bedtools intersect -u -a new_hacat_bg4_Rep2.bed -b hacat_bg4_rep1_paper.bed > hacat_shared.bed 
 cat hacat_bg4_Rep1_peaks_JR.bed | sed 's/^/chr/' > new_bg4_rep1.bed
