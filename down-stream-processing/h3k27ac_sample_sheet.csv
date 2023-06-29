@@ -1,0 +1,7 @@
+﻿SampleID,Factor,Replicate,bamReads,Peaks,PeakCaller,Tissue,Condition
+peo1_a1,peo1,1,/Volumes/diantonio/live/jenna/cutandtag/peo1_h3k27ac/aligned/remove_dup/peo1_a1.dedup.bam,/Volumes/diantonio/live/jenna/cutandtag/peo1_h3k27ac/aligned/remove_dup/peo1_a1_peaks.bed,narrow,NA,NA
+peo1_a2,peo1,2,/Volumes/diantonio/live/jenna/cutandtag/peo1_h3k27ac/aligned/remove_dup/peo1_a2.dedup.bam,/Volumes/diantonio/live/jenna/cutandtag/peo1_h3k27ac/aligned/remove_dup/peo1_a2_peaks.bed,narrow,NA,NA
+peo1_a4,peo1,3,/Volumes/diantonio/live/jenna/cutandtag/peo1_h3k27ac/aligned/remove_dup/peo1_a4.dedup.bam,/Volumes/diantonio/live/jenna/cutandtag/peo1_h3k27ac/aligned/remove_dup/peo1_a4_peaks.bed,narrow,NA,NA
+peo4_a1,peo4,1,/Volumes/diantonio/live/jenna/cutandtag/peo4_h3k27ac/aligned/remove_dup/peo4_a1.dedup.bam,/Volumes/diantonio/live/jenna/cutandtag/peo4_h3k27ac/aligned/remove_dup/peo4_a1_peaks.bed,narrow,NA,NA
+peo4_a2,peo4,2,/Volumes/diantonio/live/jenna/cutandtag/peo4_h3k27ac/aligned/remove_dup/peo4_a2.dedup.bam,/Volumes/diantonio/live/jenna/cutandtag/peo4_h3k27ac/aligned/remove_dup/peo4_a2_peaks.bed,narrow,NA,NA
+peo4_a4,peo4,3,/Volumes/diantonio/live/jenna/cutandtag/peo4_h3k27ac/aligned/remove_dup/peo4_a4.dedup.bam,/Volumes/diantonio/live/jenna/cutandtag/peo4_h3k27ac/aligned/remove_dup/peo4_a4_peaks.bed,narrow,NA,NA
