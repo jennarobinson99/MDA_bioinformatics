@@ -1,0 +1,25 @@
+#only need to install once, but load library each time 
+install.packages("BiocManager")
+install.packages("tidyverse")
+BiocManager::install("DiffBind")
+library(DiffBind)
+
+
+#run diffbind 
+h327ac_DE <- dba.analyze("h3k27ac_sample_sheet.csv")
+
+#save report 
+h3k27ac_DE.DB <- dba.report(h3k27ac_DE)
+
+#write report to file 
+write.csv(h3k27ac_DE.DB, "h3k27ac_DE_report.csv")
+
+#count up or down 
+sum(h3k27ac_DE.DB$Fold>0)
+sum(h3k27ac_DE.DB$Fold<0)
+
+#sample cluster 
+plot(h3k27ac_DE)
+
+#volcano plots 
+dba.plotVolcano(h327ac_DE)
