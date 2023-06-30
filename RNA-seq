@@ -1,0 +1,26 @@
+# align files with STAR 
+
+#PBS -lwalltime=08:00:00
+#PBS -lselect=1:ncpus=200:mem=900gb
+
+module load star
+
+for name in peo1_1 peo1_2 peo1_3
+do 
+STAR --runThreadN 12 \
+--genomeDir /rds/general/project/diantonio/live/tools/star \
+--sjdbGTFfile /rds/general/project/diantonio/live/tools/genomes/hg38_ucsc/hg38.refGene.gtf \
+--sjdbOverhang 149 \
+--outFileNamePrefix $name \
+--readFilesCommand gunzip -c \
+--readFilesIn $PBS_O_WORKDIR/../fastq/trimmed_$name.R1.fq.gz $PBS_O_WORKDIR/../fastq/trimmed_$name.R2.fq.gz \
+--outSAMtype BAM SortedByCoordinate
+done
+
+cp * $PBS_O_WORKDIR
+
+
+
+#index bam files 
+module load samtools 
+samtools index file_name.bam 
