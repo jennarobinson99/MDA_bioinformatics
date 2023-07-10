@@ -1,3 +1,14 @@
+#build genome 
+
+#PBS -lwalltime=08:00:00
+#PBS -lselect=1:ncpus=10:mem=900gb
+
+module load star
+STAR --runThreadN 12 --runMode genomeGenerate --genomeDir /rds/general/project/diantonio/live/tools/star --genomeFastaFiles /rds/general/project/diantonio/live/tools/genomes/hg38_ucsc/hg38.fa --sjdbGTFfile /rds/general/project/diantonio/live/tools/genomes/hg38_ucsc/hg38.refGene.gtf --sjdbOverhang 149
+
+cp * $PBS_O_WORKDIR
+
+
 # align files with STAR 
 
 #PBS -lwalltime=08:00:00
