@@ -36,11 +36,7 @@ resultsNames(dds)
 res.shr <- lfcShrink(dds,coef="condition_PEO4_vs_PEO1")
 
 #Remove rows with missing adj p value
-
-
-#In results, gene names are row names, but you need them as a separate column instead:
-resFix$gene <- rownames(resFix)
-
+resFix <- res.shr[!is.na(res.shr$padj),]
 
 #Export data 
 write.csv(as.data.frame(resFix), file="geneID_RNA_PEO1_v_PEO4.csv")
