@@ -1,0 +1,17 @@
+# In the directory you submit the job you need to have an annotation file for your genome, in my case “hg38_refseq.ucsc” – you can download this from the ucsc website for a lot of organisms, also can be found in: /rds/general/project/diantonio/live/tools/ROSE/ROSE-master/annotation/hg38_refseq.ucsc
+#	-g refers to genome build
+#	Need bed file of peaks and bam file
+#	Citation: http://younglab.wi.mit.edu/super_enhancer_code.html
+
+
+#PBS -lwalltime=08:00:00 
+#PBS -lselect=1:ncpus=8:mem=100gb 
+
+module load anaconda3/personal 
+module load bedtools 
+module load samtools export PATH=$PATH:/rds/general/project/diantonio/live/tools/ROSE/ROSE-master/bin 
+mkdir annotation 
+cp $PBS_O_WORKDIR/hg38_refseq.ucsc annotation 
+ROSE_main.py -g hg38 -i $PBS_O_WORKDIR/macs_test/peo4_nolambda_2R_intersect.bed -r $PBS_O_WORKDIR/peo4_b1.dedup.bam -o peo4_SE 
+
+cp * $PBS_O_WORKDIR
