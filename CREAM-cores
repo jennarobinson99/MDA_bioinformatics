@@ -1,0 +1,9 @@
+#Input.bed is list of peaks 
+#Citation: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6771399/
+
+nice R
+BiocManager::install("CREAM")
+library(CREAM)
+bed <- read.table("input.bed",header = FALSE, sep="\t",stringsAsFactors=FALSE, quote="")
+IdentifiedCOREs <- CREAM("input.bed", MinLength = 200, peakNumMin = 2 )
+write.csv(IdentifiedCOREs, file = "output.txt")
