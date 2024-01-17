@@ -1,0 +1,1 @@
+Gene.Name	PeakID	Chr	Start	End	Strand	Peak.Score	Focus.Ratio.Region.Size	Annotation	Detailed.Annotation	Distance.to.TSS	Nearest.PromoterID	Entrez.ID	Nearest.Unigene	Nearest.Refseq	Nearest.Ensembl	Gene.Alias	Gene.Description	Gene.Type	name	log2FoldChange	padj
