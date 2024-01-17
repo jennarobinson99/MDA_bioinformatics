@@ -1,0 +1,24 @@
+#this code takes an annotated peak file (annotated_peak_file.txt) and adds expression data to each peak based on name of nearest gene 
+
+#sort RNA_seq file (RNA_PEO4_v_PEO1.txt from deseq2) 
+sort -k5,5 -t $'\t' RNA_PEO4_v_PEO1.txt > sorted_RNA_PEO4_v_PEO1.txt 
+
+#sort annotated file 
+sort -t $'\t' -k16,16 annotated_peak_file.txt > temp.txt && mv temp.txt annotated_peak_file.txt 
+
+#join files based on column 16 of annotated file and column 1 of RNA-seq file - these columns contain gene names 
+join -t $'\t' -1 16 -2 1 annotated_peak_file.txt sorted_RNA_PEO4_v_PEO1.txt > temp.txt && mv temp.txt annotated_peak_file.txt 
+
+#add header row - column_header.txt is also uploaded on github
+cat column_header.txt annotated_peak_file.txt > temp.txt && mv temp.txt annotated_peak_file.txt
+
+
+
+#Automated version of code, applied to all files that start with "annotated": 
+for file in annotated*.txt
+do
+sort -k5,5 -t $'\t' RNA_PEO4_v_PEO1.txt > sorted_RNA_PEO4_v_PEO1.txt
+sort -t $'\t' -k16,16 $file > temp.txt && mv temp.txt $file
+join -t $'\t' -1 16 -2 1 $file sorted_RNA_PEO4_v_PEO1.txt > temp.txt && mv temp.txt $file
+cat column_header.txt $file > temp.txt && mv temp.txt $file
+done 
